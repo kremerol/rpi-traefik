@@ -30,8 +30,9 @@ script:
     docker rmi kremerol/arm32v6-traefik:${TAG} || true
     echo "tag"
     docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:${TAG}
+    docker images
     echo "push"
-    docker push kremerol/arm32v6-traefik-${TAG}
+    docker push kremerol/arm32v6-traefik:${TAG}
     echo "tag"
     docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:latest
     echo "push"
@@ -41,7 +42,7 @@ script:
     echo "TAG parse from Docker file is ${TAG}"
     docker rmi kremerol/arm32v7-traefik:${TAG} || true
     docker tag kremerol/arm32v7-traefik:build kremerol/arm32v7-traefik:${TAG}
-    docker push kremerol/arm32v7-traefik-${TAG}
+    docker push kremerol/arm32v7-traefik:${TAG}
     docker tag kremerol/arm32v7-traefik:build kremerol/arm32v7-traefik:latest
     docker push kremerol/arm32v7-traefik:latest
   fi
