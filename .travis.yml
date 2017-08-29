@@ -13,6 +13,7 @@ script:
   tar xzf qemu-arm-static.tar.gz &&
   popd
 # build image
+- docker build -f Dockerfile-arm32v6-alpine -t kremerol/arm32v6-traefik:build .
 - docker build -f Dockerfile-arm32v7-ubuntu -t kremerol/arm32v7-traefik:build .
 # test image
 # - docker run kremerol/arm32v7-traefik:build version
@@ -20,8 +21,15 @@ script:
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    TAG=$(grep download Dockerfile | sed 's,.*/download/,,' | sed 's,/.*$,,')
-    echo "TAG parse from Docker file is :${TAG}"
+    TAG=$(grep download Dockerfile-arm32v6-alpine | sed 's,.*/download/,,' | sed 's,/.*$,,')
+    echo "TAG parse from Docker file is ${TAG}"
+    docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:${TAG}
+    docker push kremerol/arm32v6-traefik-${TAG}
+    docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:latest
+    docker push kremerol/arm32v6-traefik:latest
+
+    TAG=$(grep download Dockerfile-arm32v7-ubuntu | sed 's,.*/download/,,' | sed 's,/.*$,,')
+    echo "TAG parse from Docker file is ${TAG}"
     docker tag kremerol/arm32v7-traefik:build kremerol/arm32v7-traefik:${TAG}
     docker push kremerol/arm32v7-traefik-${TAG}
     docker tag kremerol/arm32v7-traefik:build kremerol/arm32v7-traefik:latest
