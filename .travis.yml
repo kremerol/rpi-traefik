@@ -13,10 +13,9 @@ script:
   tar xzf qemu-arm-static.tar.gz &&
   popd
 # build image
-- docker build -t kremerol/rpi-traefik:build .
+- docker build -f Dockerfile-arm32v7-ubuntu-xenial -t kremerol/rpi-traefik:build .
 # test image
-- docker run kremerol/rpi-traefik:build uname -a
-- docker run kremerol/rpi-traefik:build version
+- docker run -f Dockerfile-arm32v7-ubuntu-xenial kremerol/rpi-traefik:build version
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
