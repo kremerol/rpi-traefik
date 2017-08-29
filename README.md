@@ -1,4 +1,4 @@
-# rpi-traefik [![Build Status](https://travis-ci.org/hypriot/rpi-traefik.svg?branch=master)](https://travis-ci.org/hypriot/rpi-traefik)
+# rpi-traefik [![Build Status](https://travis-ci.org/kremerol/rpi-traefik.svg?branch=master)](https://travis-ci.org/hypriot/rpi-traefik)
 
 Build an ARM docker container for [Traefik](https://traefik.io/) based on [Alpine](http://alpinelinux.org/)
 
