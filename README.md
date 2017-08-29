@@ -1,6 +1,6 @@
 # rpi-traefik [![Build Status](https://travis-ci.org/kremerol/rpi-traefik.svg?branch=master)](https://travis-ci.org/hypriot/rpi-traefik)
 
-Build an ARM32v6 (pi1, pi2, pi3, odroid, etc.) docker container for [Traefik](https://traefik.io/) based on [Alpine](http://alpine.org/)
+Build an ARM32v7 (pi2, pi3, odroid, etc.) docker container for [Traefik](https://traefik.io/) based on [Ubuntu](http://ubuntu.com/)
 
 ## Run it
 
