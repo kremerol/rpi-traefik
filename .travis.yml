@@ -13,17 +13,17 @@ script:
   tar xzf qemu-arm-static.tar.gz &&
   popd
 # build image
-- docker build -f Dockerfile-arm32v7-ubuntu-xenial -t kremerol/rpi-traefik:build .
+- docker build -f Dockerfile-arm32v7-ubuntu -t kremerol/arm32v7-traefik:build .
 # test image
-- docker run -f Dockerfile-arm32v7-ubuntu-xenial kremerol/rpi-traefik:build version
+- docker run kremerol/arm32v7-traefik:build version
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     TAG=$(grep download Dockerfile | sed 's,.*/download/,,' | sed 's,/.*$,,')
     echo "TAG parse from Docker file is :${TAG}"
-    docker tag kremerol/rpi-traefik:build kremerol/rpi-traefik:${TAG}
-    docker push kremerol/rpi-traefik:${TAG}
-    docker tag kremerol/rpi-traefik:build kremerol/rpi-traefik:latest
-    docker push kremerol/rpi-traefik:latest
+    docker tag kremerol/arm32v7-traefik:build kremerol/rpi-traefik:${TAG}
+    docker push kremerol/arm32v7-traefik-${TAG}
+    docker tag kremerol/arm32v7-traefik:build kremerol/rpi-traefik:latest
+    docker push kremerol/arm32v7-traefik:latest
   fi

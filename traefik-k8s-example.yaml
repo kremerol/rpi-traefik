@@ -31,7 +31,7 @@ spec:
       nodeSelector:
         nginx-controller: "traefik"
       containers:
-      - image: kremerol/rpi-traefik
+      - image: kremerol/arm32v7-traefik
         name: traefik-ingress-controller
         resources:
           limits:
