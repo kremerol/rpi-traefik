@@ -16,7 +16,7 @@ script:
     TAG=$(grep download Dockerfile | sed 's,.*/download/,,' | sed 's,/.*$,,')
     echo "TAG parse from Docker file is :${TAG}"
     docker tag kremerol/rpi-traefik:build kremerol/rpi-traefik:${TAG}
-    docker push kremerol/rpi-traefik:$TAG
+    docker push kremerol/rpi-traefik:${TAG}
     docker tag kremerol/rpi-traefik:build kremerol/rpi-traefik:latest
     docker push kremerol/rpi-traefik:latest
   fi
