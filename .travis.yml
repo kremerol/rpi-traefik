@@ -25,7 +25,7 @@ script:
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     TAG=$(grep download Dockerfile-arm32v6-alpine | sed 's,.*/download/,,' | sed 's,/.*$,,')
     echo "TAG parse from Docker file is ${TAG}"
-    docker rmi kremerol/arm32v6-traefik:${TAG}
+    docker rmi kremerol/arm32v6-traefik:${TAG} || true
     docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:${TAG}
     docker push kremerol/arm32v6-traefik-${TAG}
     docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:latest
@@ -33,7 +33,7 @@ script:
 
     TAG=$(grep download Dockerfile-arm32v7-ubuntu | sed 's,.*/download/,,' | sed 's,/.*$,,')
     echo "TAG parse from Docker file is ${TAG}"
-    docker rmi kremerol/arm32v7-traefik:${TAG}
+    docker rmi kremerol/arm32v7-traefik:${TAG} || true
     docker tag kremerol/arm32v7-traefik:build kremerol/arm32v7-traefik:${TAG}
     docker push kremerol/arm32v7-traefik-${TAG}
     docker tag kremerol/arm32v7-traefik:build kremerol/arm32v7-traefik:latest
