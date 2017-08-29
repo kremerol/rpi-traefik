@@ -14,8 +14,8 @@ script:
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     TAG=$(grep download Dockerfile | sed 's,.*/download/,,' | sed 's,/.*$,,')
-    docker tag kremerol/rpi-traefik:build hypriot/rpi-traefik:$TAG
+    docker tag kremerol/rpi-traefik:build kremerol/rpi-traefik:$TAG
     docker push kremerol/rpi-traefik:$TAG
-    docker tag kremerol/rpi-traefik:build hypriot/rpi-traefik:latest
+    docker tag kremerol/rpi-traefik:build kremerol/rpi-traefik:latest
     docker push kremerol/rpi-traefik:latest
   fi
