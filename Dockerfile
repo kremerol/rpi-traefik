@@ -4,8 +4,9 @@
 #      apk add --no-cache ca-certificates &&\
 #      chmod +x /traefik
     
-#FROM arm32v7/ubuntu:xenial
-FROM multiarch/ubuntu-core:armhf-wily
+#FROM arm32v7/ubuntu:xenial -> NOK :(
+#FROM multiarch/ubuntu-core:armhf-wily -> OK
+FROM arm32v6/alpine
 ADD https://github.com/containous/traefik/releases/download/v1.3.7/traefik_linux-arm /traefik
 RUN apt-get update &&\
     apt-get -y upgrade &&\
