@@ -14,6 +14,10 @@ docker run -d -p 8080:8080 -p 80:80 -p  443:443 -v $PWD/traefik.toml:/etc/traefi
 docker run -d -p 8080:8080 -p 80:80 -p  443:443 -v $PWD/traefik.toml:/etc/traefik/traefik.toml kremerol/armv32v7-traefik
 ```
 
+## Docker images download links:
+* From docker store: https://store.docker.com/profiles/kremerol
+* From docker hub: https://hub.docker.com/u/kremerol/
+
 ## Blog post
 
 Inspired from Hypriot: 
