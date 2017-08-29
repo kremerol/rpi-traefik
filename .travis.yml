@@ -4,8 +4,8 @@ dist: trusty
 services:
 - docker
 script:
-# prepare qemu
 - set -e
+# prepare qemu
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # get qemu-arm-static binary
 - mkdir tmp
@@ -25,10 +25,16 @@ script:
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     TAG=$(grep download Dockerfile-arm32v6-alpine | sed 's,.*/download/,,' | sed 's,/.*$,,')
     echo "TAG parse from Docker file is ${TAG}"
+    docker images
+    echo "rmi"
     docker rmi kremerol/arm32v6-traefik:${TAG} || true
+    echo "tag"
     docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:${TAG}
+    echo "push"
     docker push kremerol/arm32v6-traefik-${TAG}
+    echo "tag"
     docker tag kremerol/arm32v6-traefik:build kremerol/arm32v6-traefik:latest
+    echo "push"
     docker push kremerol/arm32v6-traefik:latest
 
     TAG=$(grep download Dockerfile-arm32v7-ubuntu | sed 's,.*/download/,,' | sed 's,/.*$,,')
