@@ -3,7 +3,7 @@
 Build an ARM32v6 (pi1) and ARM32v7 (pi2, pi3, odroid, etc.) docker container for [Traefik](https://traefik.io/):
 
 1. ARM32v6 is based on [Alpine](http://alpine.org/)
-2. ARM32v7 is based on [Ubuntu](http://ubuntu.com/)
+2. ARM32v7 is based on [Debian](http://debian.com/)
 
 ## Run it
 
