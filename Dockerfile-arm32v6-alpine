@@ -1,7 +1,7 @@
 FROM arm32v6/alpine
 COPY tmp/qemu-arm-static /usr/bin/qemu-arm-static
 
-ADD https://github.com/containous/traefik/releases/download/v1.3.7/traefik_linux-arm /traefik
+ADD https://github.com/containous/traefik/releases/download/v1.3.8/traefik_linux-arm /traefik
 
 RUN apk upgrade --no-cache &&\
     apk add --no-cache ca-certificates &&\
